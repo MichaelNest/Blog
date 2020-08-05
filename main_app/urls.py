@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls', namespace='blog')),
+    # namespace='blog' - определяем пространство имен для приложения blog,
+    # теперь будем обращаться к шаблонам приложения name - через пространство имен blog:post_list, blog:post_detail
 ]
