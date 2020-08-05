@@ -9,5 +9,5 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'body') # строка поиска
     prepopulated_fields = {'slug': ('title',)} # при создании статьи в админ-панели - slug генерируется автоматически на основе title
     raw_id_fields = ('author',) # поле поиска для среди авторов
-    date_hierarchy = ('publish',) # ссылки для навигации по датам под строкой поиска
+    date_hierarchy = 'publish' # ссылки для навигации по датам под строкой поиска
     ordering = ('status', 'publish') # сортировка статей по статусу и дате публикации по умолчанию

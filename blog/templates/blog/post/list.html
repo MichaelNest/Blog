@@ -12,4 +12,8 @@
         </p>
         {{ post.body|truncatewords:33|linebreaks }}
     {% endfor post in posts%}
+
+{% include 'pagination.html' with page=posts %}
+# здесь пораметр page в 'pagination.html' соответствует параметру posts, который передается в данный шаблон list.html
+
 {% endblock %}
