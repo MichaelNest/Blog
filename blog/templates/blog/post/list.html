@@ -13,7 +13,8 @@
         {{ post.body|truncatewords:33|linebreaks }}
     {% endfor post in posts%}
 
-{% include 'pagination.html' with page=posts %}
+<!--{% include 'blog/pagination.html' with page=page_obj %} запись при использовании класса PostListView(ListView)-->
+{% include 'blog/pagination.html' with page=posts %}
 # здесь пораметр page в 'pagination.html' соответствует параметру posts, который передается в данный шаблон list.html
 
 {% endblock %}

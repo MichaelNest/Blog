@@ -1,11 +1,20 @@
+from django.views.generic import ListView
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Post
 
+# class PostListView(ListView):
+#     model = Post
+#     # queryset = Post.objects.all()
+#     context_object_name = 'posts'
+#     paginate_by = 3
+#     template_name = 'blog/post/list.html'
+
+
 def post_list(request):
     # posts = Post.objects.all()
     object_list = Post.objects.all()
-    paginator = Paginator(object_list, 3)  # по три статьи на странице
+    paginator = Paginator(object_list, 2)  # по три статьи на странице
     page = request.GET.get('page')  # получаем номер страници из request.GET
     try:
         posts = paginator.page(page)
@@ -18,6 +27,7 @@ def post_list(request):
 
     context = {'posts': posts, 'page': page}
     return render(request, 'blog/post/list.html', context)
+
 
 def post_detail(request, year, month, day, post): # по этим параметрам будет найден пост в базе данных
     post = get_object_or_404(Post, slug=post,
