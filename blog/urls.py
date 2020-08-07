@@ -9,5 +9,5 @@ urlpatterns = [
     # path('', PostListView.as_view(), name='post_detail'),
     path('<int:year>/<int:month>/<int:day>/<slug:post>/', post_detail, name='post_detail'),
     # теперь будем обращаться к шаблонам приложения name - через пространство имен blog:post_list, blog:post_detail
-
+    path('<int:post_id>/share/', post_share, name='post_share')
 ]
